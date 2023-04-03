@@ -1,34 +1,48 @@
-FREE_WARNING = 'Free shipping only applies to single customer orders'
-BANNED_WARNIN = 'Unfortunately we do not ship to your country of residence'
-NONE_SELECTED = '0'
+const FREE_WARNING = 'Free shipping only applies to single customer orders'
+const BANNED_WARNING = 'Unfortunately we do not ship to your country of residence'
+const NONE_SELECTED = 0
+let country = 'RSA'
+let customer = 1
+let currency
+let shipping
 
-if (location = RSA) { shipping === 400 && currency === 'R' }
+const calcShipping = () => {
+    if (country === 'RSA') {
+        currency = 'R';
+        shipping = 400;
 
-if location = NAM
-shipping = 600 
-else shipping = 800
+        if (items >= 1000 && customer !== 1) {
+            console.log(FREE_WARNING)
+        } else if (items >= 1000 && customer === 1) {
+            shipping = 0
+        }
+    
+    } else if (country === 'NAM') {
+        currency = '$';
+        shipping = 600;
+        items *= 0.06;
 
-shoes = 300 * 1
-toys - 100 * 5
-shirts = 150 * 'NONE_SELECTED'
-batteries 35 * 2
-pens = 5 * 'NONE_SELECTED' 
-
-shipping = null
-currency = $
-
-if (shoes + batteries + pens + shirts > 1000 &&  ) {
-	if (location = NAM && customers < 2) {
-			if (location = RSA)
-		    shipping = 0 || calcShipping
-		}
-	}
+        if (items >= 60 && customer !== 1) {
+            console.log(FREE_WARNING)
+        } else if (items >= 60 && customer === 1) {
+            shipping = 0;
+        }
+    
+    } else {
+        currency = '$';
+        shipping = 800;
+        items *= 0.06;
+    }
 }
 
-if (shipping = 0) && (customers !=== 1) { console.log(WARNING) }
 
-location = 'NK' ? console.log(WARNING) : console.log('price', currency, shoes + batteries + pens + shirts + shipping)
+const shoes = 300 * 1
+const toys = 100 * 5
+const shirts = 150 * NONE_SELECTED
+const batteries = 35 * 2
+const pens = 5 * NONE_SELECTED
 
-customers = '1'
-const location = 'RSA'
-currency = null
+let items = shoes + toys + shirts + batteries + pens
+
+calcShipping();
+country == 'NK' ? console.log(BANNED_WARNING) : console.log('Price: ' + currency + parseInt(items + shipping))
