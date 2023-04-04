@@ -6,8 +6,8 @@ If a user is in South Africa their shipping should be R400, if a user is in Nami
 
 In addition to the above, if a user’s cost without shipping is equal to or more than R1000 or $60 in cost and they are based in South Africa or Namibia, then their shipping should be free. However, this is only the case if the number of customers is exactly 1, otherwise, it should show the message stored WARNING.  
 
-Currently, the code is supposed to log the following to the console: Price: R1270. However, at the moment it does not even run. Please look at it and not only consider how it can be fixed but also pay attention to making recommendations in terms of how the code can express the logic in a more easily understandable/readable manner.  
-
+Currently, the code is supposed to log the following to the console: Price: R1270.  
+However, at the moment it does not even run. Please look at it and not only consider how it can be fixed but also pay attention to making recommendations in terms of how the code can express the logic in a more easily understandable/readable manner.  
 
 ### original script
 ```javascript
