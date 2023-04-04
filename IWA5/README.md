@@ -49,7 +49,6 @@ currency = null
 ### Pathway to fix code
 ## Why did the original code not work?
 
-
 ## What changes did you need to make to achieve the intended behaviour?
 
 ## Why did the change result in the intended behaviour?
