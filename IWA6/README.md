@@ -13,6 +13,7 @@ At the moment both values return false , in other words:
 Please fix this issue by only changing the logic below the comment (and not the values themselves).  
 
 ### original script
+
 ```javascript
 const primaryPhone = 'O748105141'
 const secondaryPhone = '0219131568'
