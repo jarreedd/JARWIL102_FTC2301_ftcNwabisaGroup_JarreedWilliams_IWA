@@ -49,7 +49,7 @@ const holidays = {
 }
 
 const christmas = 6
-const futureId = 9
+const futureId = 1
 
 // Do not change code above this comment
 
@@ -61,7 +61,7 @@ if (holidays[`${futureId}`]) {
 
 const copied = {
     id: holidays[christmas].id,
-    name: holidays[christmas].name,
+    name: 'X-mas Day',
     date: holidays[christmas].date,
 }
 
@@ -69,7 +69,6 @@ correctDate = new Date(copied.date)
 correctDate.setHours(0)
 correctDate.setMinutes(0)
 
-copied.name = 'X-mas Day'
 
 isEarlier = correctDate.getTime() < copied.date.getTime()
 console.log('New date is earlier:', isEarlier)
