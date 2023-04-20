@@ -64,11 +64,12 @@ const copied = {
     name: holidays[christmas].name,
     date: holidays[christmas].date,
 }
-copied.name = 'X-mas Day'
 
 correctDate = new Date(copied.date)
 correctDate.setHours(0)
 correctDate.setMinutes(0)
+
+copied.name = 'X-mas Day'
 
 isEarlier = correctDate.getTime() < copied.date.getTime()
 console.log('New date is earlier:', isEarlier)
@@ -78,6 +79,7 @@ console.log(`ID change: ${holidays[christmas].id !== copied.id && copied.id}`)
 console.log(`Name change: ${holidays[christmas].name !== copied.name && copied.name}`)
 console.log(`Date change: ${holidays[christmas].date !== copied.date && copied.date.toLocaleDateString()}`)
 
+holidays[christmas] = copied
 
 const firstHolidayTimestamp = Math.min(
     new Date(holidays[0].date).getTime(),
