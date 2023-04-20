@@ -35,4 +35,4 @@ const startingAfterTax = salary - (salary*taxAsDecimal)
 const type = rent[`${size}-${lodging}`]
 
 const balance = startingAfterTax - expenses.transport - expenses.food - type
-console.log(balance.toFixed(2))
+console.log(`R${balance.toFixed(2)}`)
