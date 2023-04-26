@@ -59,7 +59,7 @@ if (holidays[`${futureId}`]) {
     console.log(`ID ${futureId} not created yet`)
 }
 
-const copied = {
+copied = {
     id: holidays[christmas].id,
     name: 'X-mas Day',
     date: holidays[christmas].date,

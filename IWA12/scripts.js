@@ -67,6 +67,7 @@ if (!STATUS_MAP[statusBook2.innerHTML].canCheckIn) {
 }
 
 checkinBook3.style.color = ''
+statusBook3.style.color = STATUS_MAP[statusBook3.innerHTML].color
 if (!STATUS_MAP[statusBook3.innerHTML].canReserve) {
     reserveBook3.disabled = true;
 }
