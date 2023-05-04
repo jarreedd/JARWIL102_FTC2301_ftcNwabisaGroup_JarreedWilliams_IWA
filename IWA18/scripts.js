@@ -1,3 +1,6 @@
+import { createOrderHtml, html, updateDraggingHtml, moveToColumn } from "./view.js";
+import { createOrderData, updateDragging } from "./data.js";
+
 /**
  * A handler that fires when a user drags over any element inside a column. In
  * order to determine which column the user is dragging over the entire event
@@ -28,14 +31,73 @@ const handleDragOver = (event) => {
 }
 
 
-const handleDragStart = (event) => {}
-const handleDragEnd = (event) => {}
-const handleHelpToggle = (event) => {}
-const handleAddToggle = (event) => {}
-const handleAddSubmit = (event) => {}
-const handleEditToggle = (event) => {}
-const handleEditSubmit = (event) => {}
-const handleDelete = (event) => {}
+// const handleDragStart = (event) => {}
+// const handleDragEnd = (event) => {}
+
+const handleHelpToggle = (event) => {
+    html.help.overlay.showModal()
+
+    html.help.cancel.addEventListener('click', () => {
+        html.help.overlay.close()
+    })
+}
+
+const handleAddToggle = (event) => {
+    html.add.overlay.showModal()
+    
+    html.add.cancel.addEventListener("click", () => {
+        html.add.overlay.close()
+    })
+}
+
+const handleAddSubmit = (event) => {
+    event.preventDefault();
+
+    const data = {
+        title: html.add.title.value,
+        table: html.add.table.value,
+        column: 'ordered'
+    }
+    const orderHtml = createOrderHtml(createOrderData(data))
+    document.querySelector('[data-column="ordered"]').appendChild(orderHtml)
+    html.add.overlay.close();
+}
+
+let orderId
+
+const handleEditToggle = (event) => {
+    event.preventDefault()
+    html.edit.overlay.showModal()
+
+    orderId = event.target.closest('.order')
+    html.add.title.value = orderId.querySelector('[data-order-title]').innerText
+    html.add.table.value = orderId.querySelector('[data-order-table]').innerText
+
+    html.edit.cancel.addEventListener('click', () => {
+        html.edit.overlay.close()
+    })
+
+}
+
+const handleEditSubmit = (event) => {
+    event.preventDefault();
+    orderId.remove()
+    
+    const data = {
+        title: html.edit.title.value,
+        table: html.edit.table.value,
+        column: html.edit.column.value
+    }
+    const orderHtml = createOrderHtml(createOrderData(data))
+    document.querySelector(`[data-column="${data.column}"]`).appendChild(orderHtml)
+    html.edit.overlay.close()
+}
+
+const handleDelete = (event) => {
+    orderId.remove()
+    html.edit.overlay.close()
+
+}
 
 html.add.cancel.addEventListener('click', handleAddToggle)
 html.other.add.addEventListener('click', handleAddToggle)
