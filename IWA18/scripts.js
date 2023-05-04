@@ -1,5 +1,5 @@
 import { createOrderHtml, html, updateDraggingHtml, moveToColumn } from "./view.js";
-import { createOrderData, updateDragging } from "./data.js";
+import { createOrderData, updateDragging, state} from "./data.js";
 
 /**
  * A handler that fires when a user drags over any element inside a column. In
@@ -30,9 +30,21 @@ const handleDragOver = (event) => {
     updateDraggingHtml({ over: column })
 }
 
+let orderId
+let draggedItem
 
-// const handleDragStart = (event) => {}
-// const handleDragEnd = (event) => {}
+const handleDragStart = (event) => {
+    draggedItem = event.target.closest(".order"); 
+    state.dragging.source = state.dragging.over;
+    orderId = draggedItem.dataset.id;
+}
+
+const handleDragEnd = (event) => {
+    event.preventDefault();
+    const moveTo = state.dragging.over; //
+    moveToColumn(orderId, moveTo);
+    updateDraggingHtml({over: null})
+}
 
 const handleHelpToggle = (event) => {
     html.help.overlay.showModal()
@@ -62,8 +74,6 @@ const handleAddSubmit = (event) => {
     document.querySelector('[data-column="ordered"]').appendChild(orderHtml)
     html.add.overlay.close();
 }
-
-let orderId
 
 const handleEditToggle = (event) => {
     event.preventDefault()
